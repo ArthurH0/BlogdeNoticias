@@ -1,0 +1,29 @@
+<div class="container-fluid bg-light text-dark mb-5">
+  <h1>Bem vindo ao blog</h1>
+  <p class=>Bem-vindo ao nosso cantinho virtual!
+    É com grande alegria que te recebemos aqui no nosso blog. Este é um espaço dedicado a compartilhar conhecimento,
+    inspiração e um pouco do nosso mundo com você.
+  </p>
+  <a href="/usuarios/registro"><button class="btn btn-info mb-3">Criar uma conta</button></a>
+</div>
+{{>_msg}}
+<form class="d-flex" action="/">
+  <input type="text" name="titulo" placeholder="Pesquisar post" class="form-control d-flex">
+  <button type="submit" class="btn btn-success  m-3">Pesquisar</button>
+</form>
+
+
+{{#each postagens}}
+<div class="card mt-4 mb-4">
+  <div class="card-body">
+    <h4>{{titulo}}</h4>
+    <p>{{descricao}}</p>
+    <a href="conteudo/{{slug}}"><button class="btn btn-info mb-1">Leia mais</button></a>
+    <hr>  
+    <p>Categoria: {{categoria.nome}}</p>
+    <small>Data de publicação: {{data}}</small>
+  </div>
+</div>
+{{else}}
+<div class="mt-2"> Nenhum postagem encontrada</div>
+{{/each}}

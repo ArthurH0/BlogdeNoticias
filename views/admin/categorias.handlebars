@@ -1,0 +1,29 @@
+<h2>Lista de Categorias</h2>
+
+{{>_msg}}
+
+<div class="container ">
+  <form class="d-flex" action="/admin/categorias">
+    <input type="text" name="nome" id="nome" placeholder="Pesquisar categoria" class="form-control w-100 d-flex">
+    <button type="submit" class="btn btn-success  m-3">Pesquisar</button>
+  </form>
+</div>
+<a href="/admin/categorias/add"><button type="button" class="btn btn-success m-3">Adicionar Categorias</button></a>
+
+{{#each categorias}}
+<div class="card mt-4">
+  <div class="card-body">
+    <h4>{{nome}}</h4>
+    <p>{{slug}}</p>
+    <p>{{data}}</p>
+    <a href="/admin/categorias/edit/{{_id}}"><button class="btn btn-success">Editar Categoria</button></a>
+    <form action="/admin/categorias/deletar" method="POST">
+      <input type="hidden" name="id" value="{{_id}}">
+      <button class="btn btn-danger mt-3" type="submit">Deletar Categoria</button>
+    </form>
+  </div>
+</div>
+{{else}}
+ <div class="mt-2">Nenhuma categoria encontrada</div>
+{{/each}}
+
